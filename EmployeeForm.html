@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <link rel="https://fonts.googleapis.com/css?family=Open+Sans:400,700&subset=cyrillic" rel="stylesheet">
+        <title>Employee Payroll Form</title>
+        <style>
+            body{
+                margin: 0;
+                height: 100%;
+            }
+            .header{
+                padding: 15px 0;
+                background-color: antiquewhite;
+            }
+            .header-content{
+                display: flex;
+                flex-direction: row;
+                justify-content: center;
+                align-items: center;
+                border: 0px solid green;
+            }
+            .logo-content{
+                display: flex;
+                flex-direction: row;
+                justify-content: center;
+                align-items: center;
+                border: 0px solid green;
+                width: 80%;
+            }
+            .logo-content img{
+                border: solid 0px teal;
+            }
+            .emp-text{
+                font: normal normal bold 20px/25px Montserrat;
+                letter-spacing: 0px;
+                font-family: "Montserrat", sans-serif;
+                color: yellowgreen;
+                text-transform: capitalize;
+            }
+            .emp-payroll{
+                color: turquoise;
+            }
+            *{
+                box-sizing: border-box;
+            }
+             .form-content{
+                min-height: calc(100%-80px);
+                background-color: whitesmoke;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                border: 0px solid green;
+            }
+            .form{
+                width: 65%;
+                padding: 44px 60px;
+                background: white 0% 0% no-repeat padding-box;
+                box-shadow: 0px 3px 6px turquoise;
+                border-radius: 8px; 
+            }
+            .form-head{
+                font: normal normal bold 24px/37px sans-serif;
+                letter-spacing: 0px;
+                color: teal;
+                text-transform: capitalize;
+                padding-bottom: 20px;
+            }
+            .row-content{
+                display: flex;
+                flex-direction: row;
+                margin-bottom: 10px;
+                align-items: center;
+                border: 0px solid green;
+            }
+            .label{
+                min-width: 40px;
+            }
+            label{
+                padding: 12px 12px 12px 0px;
+                display: inline-block;
+            }
+            .text{
+                font-size: 16px;
+                color: grey;
+                opacity: 1;
+                font-family: sans-serif;
+            }
+            .input{
+                width: 100%;
+                padding: 12px;
+                border: 1px solid grey;
+                border-radius: 4px;
+                resize: vertical;
+            }
+            .profile—radio—content { 
+                display: flex; 
+                flex-direction: row;
+            } 
+            .profile—radio—content > label { 
+                display: flex; 
+                flex-direction: row;
+                align-items: center;
+            } 
+            .profile { 
+                width: 40px; 
+                border-radius: 50%;
+                margin-left: 12px;
+            } 
+            select{
+                padding:12px;
+                border: 1px solid tan;
+                border-radius: 4px;
+                resize: vertical;
+                font: normal normal normal 16px Roboto;
+                letter-spacing: 0px;
+                color: teal;
+                background-color: transparent;
+            }
+            .buttonParent { 
+                display: flex; 
+                margin-bottom: 10px; 
+                justify-content: space-between; 
+                margin-top: 20px;
+            } 
+            .button { 
+                font-size: 20px; 
+                font-family: Reboto; 
+                letter-spacing: 0px ;
+                color:black; 
+                opacity: 1; 
+                background-color: blanchedalmond;  
+                font-weight: 400; 
+                min-width: 140px; 
+                padding: 7px 7px; 
+                border: 1px solid aquamarine; 
+                cursor: pointer; 
+            } 
+            .submitButton {  
+                margin-right: 30px; 
+            } 
+            .cancelButton {  
+                /* margin-left: 140px;  */
+                text-decoration: none; 
+                text-align: center
+            }
+            @media only screen and (max-width: 960px) {
+                .cancelButton{
+                    margin-left: 0px;
+                }
+                .form{
+                    width: 85%;
+                    padding: 44px 20px;
+                }
+            }
+            @media only screen and (max-width: 600px) {
+            .form { 
+                margin-top: lOpx; 
+            } 
+            .row { 
+                flex-direction: column; 
+            } 
+            .uploadeutton { 
+                justify-content: flex-start; 
+            }
+            .profile-radio-button {
+                 flex-flow: wrap; 
+            } 
+            .submit-reset { 
+                width: 100%; 
+                display: flex; 
+                flex-grow: 1; 
+                flex-direction: row-reverse; 
+                justify-content: space-between; 
+                margin-bottom: 20px; 
+            } 
+            .submitButton { 
+                margin: 0; 
+            } 
+            .buttonParent{ 
+                flex-direction: column-reverse; 
+                align-items: flex-start; 
+            }
+            } 
+        </style>
+      
+    </head>
+    <body>
+        <header class="header-content header">
+            <div class="logo-content">
+                <img src="logo.png" alt="logo image">
+                <div>
+                    <span class="emp-text">Employee</span></br>
+                    <span class="emp-text emp-payroll">Payroll</span>
+                </div>
+            </div>
+        </header>
+        <div class="form-content">
+            <form class="form" action="" onsubmit="save();return false">
+                <div class="form-head">Employee Payroll Form</div>
+                <div class="row-content">
+                    <label class="label text" for="name">Name</label>
+                    <input class="input" type="text" id="name" name="name" placeholder="Your Name.." required>
+                </div>
+                <div class="row-content">
+                    <label class="label text" for="profile">Profile image</label>
+                    <div class="profile-radio-content">
+                        <label> 
+                            <input type="radio" id="profile1" name="profile" value="Ellipse -1.png" required> 
+                            <img class="profile" id='imagel' src="Ellipse -1.png">
+                        </label> 
+                        <label> 
+                            <input type="radio" id="profile2" name="profile" value="Ellipse -2.png" required> 
+                            <img class="profile" id='image2' src="Ellipse -2.png"> 
+                        </label> 
+                        <label> 
+                            <input type="radio" id="profile3" name="profile" value="Ellipse -3.png" required> 
+                            <img clas="profile" id='image3' src="Ellipse -3.png"> 
+                        </label> 
+                        <label> 
+                            <input type="radio" id="profile4" name="profile" value="Ellipse -4.png" required> 
+                            <img class="profile" id='image4' src="Ellipse -4.png"> 
+                        </label> 
+                    </div> 
+                </div>
+                <div class="row-content">
+                    <label class="label text" for="gender">Gender</label>
+                    <div>  
+                        <input type="radio" id="male" name="gender" value="male">
+                        <label class="text" for="male">Male</label> 
+                        <input type="radio" id="female" name="gender" value="female"> 
+                        <label class="text" for="female">Female</label> 
+                    </div> 
+                </div> 
+                <div class="row-content"> 
+                    <label class="label text" for="department">Department</label> 
+                    <div> 
+                        <input class="checkbox" type="checkbox" id="hr" name="hr" value="HR"> 
+                        <label class="text" for="hr">HR</label> 
+                        <input class="checkbox" type="checkbox" id="sales" name="sales" value="Sales"> 
+                        <label class="text" for="sales">Sales</label> 
+                        <input class="checkbox" type="checkbox" id="finance" name="finance" value="Finance"> 
+                        <label class="text" for="finance">Finance</label> 
+                        <input class="checkbox" type="checkbox" id="engineer" name="engineer" value="Engineer"> 
+                        <label class="text" for="engineer">Engineer</label> 
+                        <input class="checkbox" type="checkbox" id="others" name="others" value="Others"> 
+                        <label class="text" for="others">Others</label> 
+                    </div> 
+                </div> 
+                <div class="row-content"> 
+                    <label class="label text" for="salary">Choose your salary: </label> 
+                    <input class="input" type="range" name="salary" id="salary" min="300000" max="500000" step="100" value="400000"> 
+                    <output class="salary-output text" for="salary" id="output-range">400000</output> 
+                </div>
+                <script>
+                    var salary=document.getElementById("salary");
+                    var outputRange=document.getElementById("output-range");
+                    salary.addEventListener("change",function(){
+                        outputRange.textContent=salary.value;
+                    })
+                </script>
+                <div class="row-content"> 
+                    <label class="label text" for="startDate">Start Date</label> 
+                    <div> 
+                        <select id="day" name="Day"> 
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                            <option value="7">7</option>
+                            <option value="8">8</option>
+                            <option value="9">9</option>
+                            <option value="10">10</option>
+                            <option value="11">11</option>
+                            <option value="12">12</option>
+                            <option value="13">13</option>
+                            <option value="14">14</option>
+                            <option value="15">15</option>
+                            <option value="16">16</option>
+                            <option value="17">17</option>
+                            <option value="18">18</option>
+                            <option value="19">19</option>
+                            <option value="20">20</option>
+                            <option value="21">21</option>
+                            <option value="22">22</option> 
+                            <option value="23">23</option> 
+                            <option value="24">24</option>
+                            <option value="25">25</option>
+                            <option value="26">26</option> 
+                            <option value="27">27</option>
+                            <option value="28">28</option>
+                            <option value="29">29</option> 
+                            <option value="30">30</option> 
+                            <option value="31">31</option>    
+                        </select>
+                        <select id="month" name="Month">
+                            <option value="Jan">January</option>
+                            <option value="Feb">Febuary</option> 
+                            <option value="March">March</option> 
+                            <option value="April">April</option>  
+                            <option value="May">May</option> 
+                            <option value="June">June</option>  
+                            <option value="July">July</option>  
+                            <option value="Aug">August</option>  
+                            <option value="Sept">September</option>  
+                            <option value="Oct">October</option>  
+                            <option value="Nov">November</option>  
+                            <option value="Dec">December</option> 
+                        </select> 
+                        <select id="year" name="Year">  
+                            <option value="2020">2020</option>  
+                            <option value="2019">2019</option>  
+                            <option value="2018">2018</option>  
+                            <option value="2017">2017</option>  
+                            <option value="2016">2016</option>  
+                        </select> 
+                    </div>              
+                </select>
+                </div>
+                <div class="row—content"> 
+                    <label class="label text" for="notes">Notes</label> 
+                    <textarea id="notes" class="input" name="Notes" placeholdere" style="height:100px"></textarea> 
+                </div> 
+                <div class="buttonParent"> 
+                    <a href="EmployeeForm.html" class=" button cancelButton">Cancel</a> 
+                    <div class="submit—reset"> 
+                        <button type="submit" class="button submitButton" id="submitButton">Submit</button> 
+                        <button type="reset" class="resetButton button">Reset</button> 
+                    </div> 
+                </div>  
+            </form>
+        </div>
+    </body>
+</html>
