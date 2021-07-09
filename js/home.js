@@ -12,7 +12,7 @@ const getEmpPayrollDataFromStorage =() =>{
 
 const createInnerHtml = () => { 
     const headerHtml = "<th></th><th>Name</th><th>Gender</th><th>Department</th><th>Salary</th><th>StartDate</th>"+
-                        "<th>Actions</th> ";
+                    "<th>Actions</th> ";
     if(empPayrollList.length==0) return;
     let innerHtml=`${headerHtml}`;
     for(const empPayrollData of empPayrollList){
@@ -23,7 +23,7 @@ const createInnerHtml = () => {
             <td>${empPayrollData._gender}</td> 
             <td>${getDeptHtml(empPayrollData._department)}</td> 
             <td>${empPayrollData._salary}</td> 
-            <td>${empPayrollData._startDate}</td> 
+            <td>${stringifyDate(empPayrollData._startDate)}</td> 
             <td> 
                 <img id="${empPayrollData._id}" onclick="remove(this)" src="../images/icons/delete-black-18dp.svg" alt="delete"> 
                 <img id="${empPayrollData._id}" onclick="update(this)" src="../images/icons/create-black-18dp.svg" alt="edit"> 
@@ -33,6 +33,16 @@ const createInnerHtml = () => {
     }
     document.querySelector('.table').innerHTML = innerHtml;
 }
+const stringifyDate = (date) => {
+    const options = { 
+       day: 'numeric', 
+       month: 'short', 
+       year: 'numeric' 
+   }; 
+   const newDate = !date ? "undefined" : new Date(Date.parse(date)).toLocaleDateString('en-GB', options); 
+return newDate; 
+}
+
 const getDeptHtml=(deptList)=>{
     let deptHtml='';
     for(const dept of deptList){
@@ -40,33 +50,19 @@ const getDeptHtml=(deptList)=>{
     }
     return deptHtml;
 }
-// const createEmployeePayrollJSON= () => {
-//     let empPayrollListLocal = [ 
-//         { 
-//             _name: 'Narayan Nahadeyan', 
-//             _gender: 'male', 
-//             _department:[ 
-//                 'Engineering', 
-//                 'Finance' 
-//             ], 
-//             _salary: '500000', 
-//             _startDate: '29 Oct 2019', 
-//             _note: '', 
-//             _id: new Date().getTime(), 
-//             _profilepic: '../images/profile-images/Ellipse -2.png' 
-//         }, 
-//         {
-//             _name: 'Marna Shashanka Keerthi Kumar', 
-//             _gender: 'female', 
-//             _department: [ 
-//                 'Sales' 
-//             ],
-//             _salary: '400000',
-//             _startDate: '29 Oct 2019', 
-//             _note: '',
-//             _id: new Date().getTime(), 
-//             _profilePic: '../images/profile-trages/Ellipse -1.png' 
-//         }
-//     ];
-// return empPayrollListLocal;
-// } 
+const remove = (node) => {
+    let empPayrollData = empPayrollList.find(empData => empData._id == node.id);
+    if (!empPayrollData) return; 
+    const index = empPayrollList.map(empData => empData._id).indexOf(empPayrollData._id); 
+    empPayrollList.splice(index, 1); 
+    localStorage.setItem("EmployeePayrollList", JSON.stringify(empPayrollList)); 
+    document.querySelector(".emp-count").textContent = empPayrollList.length; 
+    createInnerHtml(); 
+}
+const update = (node) =>{
+    let empPayrollData = empPayrollList.find(empData => empData._id == node.id);
+    if(!empPayrollData) return;
+    localStorage.setItem('editEmp',JSON.stringify(empPayrollData));
+    window.location.replace("../html/EmployeeForm.html");
+} 
+
