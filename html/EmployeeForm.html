@@ -6,9 +6,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Employee Payroll Form</title>
     <link href="../css/EmployeePayroll.css" rel = "Stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,600;1,500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;600&display=swap" rel="stylesheet">
     <script src="../js/EmployeePayrollData.js"></script>
-    <script src="../js/EmployeePayroll.js"></script>
+    <script src ="../js/utility.js"></script>
     <script src="../js/home.js"></script>
+    <script src="../js/site_properties.js"></script>
+    <script src="../js/httpService.js"></script>
 </head>
 <body>
     <header class="header-content">
@@ -33,23 +37,23 @@
                 <div class="profile-radio-content">
                     <label>
                         <input type="radio" id="profile1" name="profile"
+                        value="../images/profile-images/Ellipse -3.png" required>
+                        <img class="profile" id="image1"src="../images/profile-images/Ellipse -3.png">                    
+                    </label>
+                    <label>
+                        <input type="radio" id="profile2" name="profile"
                         value="../images/profile-images/Ellipse -1.png" required>
-                        <img class="profile" id="image1"src="../images/profile-images/Ellipse -1.png">                    
+                        <img class="profile" id="image2"src="../images/profile-images/Ellipse -1.png">                    
                     </label>
                     <label>
                         <input type="radio" id="profile3" name="profile"
-                        value="../images/profile-images/Ellipse -3.png" required>
-                        <img class="profile" id="image3"src="../images/profile-images/Ellipse -3.png">                    
+                        value="../images/profile-images/Ellipse -8.png" required>
+                        <img class="profile" id="image3"src="../images/profile-images/Ellipse -8.png">                    
                     </label>
                     <label>
                         <input type="radio" id="profile4" name="profile"
-                        value="../images/profile-images/Ellipse -4.png" required>
-                        <img class="profile" id="image4"src="../images/profile-images/Ellipse -4.png">                    
-                    </label>
-                    <label>
-                        <input type="radio" id="profile4" name="profile"
-                        value="../images/profile-images/Ellipse -5.png" required>
-                        <img class="profile" id="image4"src="../images/profile-images/Ellipse -5.png">                    
+                        value="../images/profile-images/Ellipse -7.png" required>
+                        <img class="profile" id="image4"src="../images/profile-images/Ellipse -7.png">                    
                     </label>
 
                 </div>
@@ -57,11 +61,11 @@
             <div class="row-content">
                 <label class="label text" for="gender">Gender</label>
                 <div>
-                    <input type="radio" id="male" name="gender" value="male">
+                    <input type="radio" id="male" name="gender" value="Male">
                     <label class="text" for="male">Male</label>
-                    <input type="radio" id="female" name="gender" value="female">
+                    <input type="radio" id="female" name="gender" value="Female">
                     <label class="text" for="female">Female</label>
-                    <input type="radio" id="other" name="gender" value="other">
+                    <input type="radio" id="other" name="gender" value="Other">
                     <label class="text" for="other">Other</label>
                 </div>
             </div>
@@ -152,10 +156,10 @@
                 <textarea id="notes" class="input"name="Notes" placeholder="" style="height:100px"></textarea>
             </div>
             <div class="button-content">
-                <a href="./home.html" class="resetButton button cancelButton">Cancel</a>
+                <a href="./HomePage.html" class="resetButton button cancelButton">Cancel</a>
                 <div class="submit-reset">
                     <button type="submit" class="button submitButton" id="submitButton">Submit</button>
-                    <button type="reset" class="resetButton button">Reset</button>
+                    <button type="reset" class="resetButton button" id="resetBtn">Reset</button>
                 </div>
             </div>
         </form>
